@@ -39,14 +39,6 @@ vrm_avs_disable()
     echo 0 > ${X}
 }
 
-# Usage: vrm_vout_max_1v1 <bus> <i2c_address> <page>
-# Sets VOUT_MAX to 1.1V
-vrm_vout_max_1v1()
-{
-    echo Setting VOUT_MAX=[1.1V] on bus $1 VRM @$2 rail $3...
-    echo 1100 > ${i2c_path}/$1-$(printf "%04x" $2)/vout$(printf "%d" $3)_max
-}
-
 # Usage: for_each_rail <command>
 # <command> will be invoked with <bus> <i2c_address> <page>
 for_each_rail()
@@ -66,10 +58,6 @@ then
 elif [ "$1" == "disable" ]
 then
     for_each_rail vrm_avs_disable
-elif [ "$1" == "vdn_max" ]
-then
-    addrs_pages="$vdn_i2c_addr_page"
-    for_each_rail vrm_vout_max_1v1
 else
     echo "\"$0 <enable|disable>\" to control whether VRMs use AVSBus"
     echo "\"$0 <vdn_max>\" to set VDN rails VOUT_MAX to 1.1V"
