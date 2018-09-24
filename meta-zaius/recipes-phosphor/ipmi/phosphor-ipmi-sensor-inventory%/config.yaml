@@ -365,3 +365,49 @@
   offsetB: 0
   bExp: 0
 
+
+======================================================
+
+
+0xE1:
+  <<: *voltage
+  path: /xyz/openbmc_project/sensors/voltage/hotswap_vin
+  multiplierM: 393
+  offsetB: 0
+  bExp: 0
+0xE2: &current
+  sensorType: 0x03
+  path: /xyz/openbmc_project/sensors/current/hotswap_iin
+  sensorReadingType: 0x01
+  multiplierM: 200
+  offsetB: 0
+  bExp: 0
+  unit: xyz.openbmc_project.Sensor.Value.Unit.Amperes
+  scale: -3
+  serviceInterface: org.freedesktop.DBus.Properties
+  readingType: readingData
+  interfaces:
+    xyz.openbmc_project.Sensor.Value:
+      Value:
+        Offsets:
+          0xFF:
+            type: int64_t
+0xE3:
+  <<: *voltage
+  path: /xyz/openbmc_project/sensors/voltage/hotswap_vout
+  multiplierM: 393
+  offsetB: 0
+  bExp: 0
+0xE4:
+  <<: *power
+  path: /xyz/openbmc_project/sensors/power/hotswap_power
+  multiplierM: 8000000
+  offsetB: 0
+  bExp: 0
+0xE5:
+  <<: *temperature
+  path: /xyz/openbmc_project/sensors/temperature/hotswap_temp
+  multiplierM: 511
+  offsetB: 20
+  bExp: 3
+
