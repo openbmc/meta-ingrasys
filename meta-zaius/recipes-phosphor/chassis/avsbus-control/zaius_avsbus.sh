@@ -19,7 +19,10 @@ i2c_path="/sys/bus/i2c/devices/"
 vrm_avs_enable()
 {
     echo Enabling AVSBus on bus $1 VRM @$2 rail $3...
-    echo 1 > ${i2c_path}/$1-$(printf "%04x" $2)/avs$(printf "%d" $3)_enabled
+    local p=$(printf "%04x" $2)
+    local j=$(printf "%d" $3)
+    X=$(find ${i2c_path}/$1-$p/hwmon/ -iname "avs${j}_enable")
+    echo 1 > ${X}
 }
 
 # Usage: vrm_avs_disable <bus> <i2c_address> <page>
@@ -30,7 +33,10 @@ vrm_avs_enable()
 vrm_avs_disable()
 {
     echo Disabling AVSBus on bus $1 VRM @$2 rail $3...
-    echo 0 > ${i2c_path}/$1-$(printf "%04x" $2)/avs$(printf "%d" $3)_enabled
+    local p=$(printf "%04x" $2)
+    local j=$(printf "%d" $3)
+    X=$(find ${i2c_path}/$1-$p/hwmon/ -iname "avs${j}_enable")
+    echo 0 > ${X}
 }
 
 # Usage: vrm_vout_max_1v1 <bus> <i2c_address> <page>
