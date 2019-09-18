@@ -1,0 +1,9 @@
+Ok-To-Test+1: Jenkins <openbmc-ci-admin@ozlabs.org>
+Verified+1: Jenkins <openbmc-ci-admin@ozlabs.org>
+Code-Review+1: Patrick Venture <venture@google.com>
+Code-Review+2: Brad Bishop <radsquirrel@gmail.com>
+Submitted-by: Brad Bishop <radsquirrel@gmail.com>
+Submitted-at: Wed, 18 Sep 2019 20:48:41 +0000
+Reviewed-on: https://gerrit.openbmc-project.xyz/c/openbmc/meta-ingrasys/+/25187
+Project: openbmc/meta-ingrasys
+Branch: refs/heads/master
